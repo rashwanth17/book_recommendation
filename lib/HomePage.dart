@@ -6,7 +6,6 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // List of dummy book data
     final books = [
       {
         "title": "The Molecule of More",
@@ -68,7 +67,7 @@ class HomePage extends StatelessWidget {
               ],
             ),
           ),
-          SizedBox(height: 20),
+          SizedBox(height: 5),
           Expanded(
             child: ListView.builder(
                 scrollDirection: Axis.horizontal,
@@ -84,7 +83,7 @@ class HomePage extends StatelessWidget {
                   );
                 }),
           ),
-          SizedBox(height: 20),
+          SizedBox(height: 10),
           Container(
             margin: EdgeInsets.symmetric(horizontal: 10),
             child: Row(
