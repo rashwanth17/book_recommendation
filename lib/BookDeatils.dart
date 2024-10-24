@@ -21,7 +21,12 @@ class BookDetailPage extends StatelessWidget {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            Center(child: Image.network(imageUrl)),
+            Center(
+              child: Container(
+                child: Image.network(imageUrl),
+                height: 400,
+              ),
+            ),
             Padding(
               padding: const EdgeInsets.all(16.0),
               child: Text(

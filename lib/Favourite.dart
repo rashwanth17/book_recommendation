@@ -14,13 +14,15 @@ class FavoritesPage extends StatelessWidget {
         itemCount: favoriteBooks.length,
         itemBuilder: (context, index) {
           return ListTile(
+            leading: Image.network(favoriteBooks[index]['image']),
             title: Text(favoriteBooks[index]['title']),
-            subtitle: Text(favoriteBooks[index]['author']),
+            subtitle: Text(
+              favoriteBooks[index]['author'],
+              style: TextStyle(color: Colors.grey),
+            ),
             trailing: IconButton(
               icon: Icon(Icons.favorite, color: Colors.red),
-              onPressed: () {
-// Remove from favorites functionality can be added here
-              },
+              onPressed: () {},
             ),
             onTap: () {
               Navigator.push(
