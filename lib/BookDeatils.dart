@@ -23,6 +23,9 @@ class BookDetailPage extends StatelessWidget {
           children: [
             Center(
               child: Container(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(20),
+                ),
                 child: Image.network(imageUrl),
                 height: 400,
               ),

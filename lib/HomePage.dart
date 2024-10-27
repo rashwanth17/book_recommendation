@@ -1,5 +1,6 @@
 import 'package:book/Book.dart';
 import 'package:book/BookDeatils.dart';
+import 'package:book/Bot.dart';
 import 'package:book/Favourite.dart';
 import 'package:book/theme_provider.dart';
 import 'package:flutter/material.dart';
@@ -55,7 +56,71 @@ class _HomePageState extends State<HomePage> {
           "https://i5.walmartimages.com/asr/3be5ebcf-c0c4-45b8-a49d-08baa6a14c87_1.636569a6333aa1529a0950793264911a.jpeg",
       "isFavorite": false,
       "rating": 4.5,
+      "genre": "Self-help"
+    },
+    {
+      "title": "Rich Dad Poor Dad",
+      "author": "Robert T. Kiyosaki",
+      "description":
+          "This book explores the mindset and financial knowledge that can help achieve wealth, through lessons from two contrasting father figures.",
+      "image": "https://images.thenile.io/r1000/9781612680194.jpg",
+      "isFavorite": false,
+      "rating": 4.7,
+      "genre": "Finance"
+    },
+    {
+      "title": "The Art of Being Alone",
+      "author": "Renuka Gavrani",
+      "description":
+          "This book delves into finding peace and fulfillment in solitude, helping readers embrace alone time for personal growth.",
+      "image":
+          "https://friendsbook.pk/cdn/shop/files/61GbHEZKOPL._SL1500.jpg?v=1704142480",
+      "isFavorite": false,
+      "rating": 4.3,
+      "genre": "Self-help"
+    },
+    {
+      "title": "Atomic Habits",
+      "author": "James Clear",
+      "description":
+          "This book provides a comprehensive guide to building good habits and breaking bad ones, showing how small changes lead to remarkable results.",
+      "image":
+          "https://wizdomapp.com/wp-content/uploads/2024/02/Atomic-Habits-1.png",
+      "isFavorite": false,
+      "rating": 4.9,
       "genre": "Self-Help"
+    },
+    {
+      "title": "Thinking, Fast and Slow",
+      "author": "Daniel Kahneman",
+      "description":
+          "This book explores the two systems that drive the way we think—'fast' intuitive thinking and 'slow' logical thinking.",
+      "image": "https://i.insider.com/541748b0eab8eade098fda39?width=1200",
+      "isFavorite": false,
+      "rating": 4.6,
+      "genre": "Psychology"
+    },
+    {
+      "title": "Deep Work",
+      "author": "Cal Newport",
+      "description":
+          "This book emphasizes the power of focused, distraction-free work to produce better results in less time.",
+      "image":
+          "https://www.tirryaq.com/wp-content/uploads/2020/11/41QoykqonNL._SX317_BO1204203200_.jpg",
+      "isFavorite": false,
+      "rating": 4.4,
+      "genre": "Productivity"
+    },
+    {
+      "title": "Sapiens: A Brief History of Humankind",
+      "author": "Yuval Noah Harari",
+      "description":
+          "This book explores the history of human evolution, society, and culture from ancient times to the present.",
+      "image":
+          "https://pathakshamabesh.com/wp-content/uploads/2022/02/9780099590088.jpg",
+      "isFavorite": false,
+      "rating": 4.7,
+      "genre": "History"
     }
 
     // Add more books here...
@@ -72,14 +137,11 @@ class _HomePageState extends State<HomePage> {
     });
   }
 
-  // Get filtered and sorted books based on selected genre and sorting
   List<Map<String, dynamic>> get filteredBooks {
     List<Map<String, dynamic>> filtered = books
         .where((book) =>
             (selectedGenre == 'All' || book['genre'] == selectedGenre) &&
-            book['title']
-                .toLowerCase()
-                .contains(searchQuery.toLowerCase())) // Filter by search query
+            book['title'].toLowerCase().contains(searchQuery.toLowerCase()))
         .toList();
 
     if (sortByRating) {
@@ -193,6 +255,24 @@ class _HomePageState extends State<HomePage> {
                                           Navigator.pop(context);
                                         },
                                       ),
+                                      ListTile(
+                                        title: Text('History'),
+                                        onTap: () {
+                                          setState(() {
+                                            selectedGenre = 'History';
+                                          });
+                                          Navigator.pop(context);
+                                        },
+                                      ),
+                                      ListTile(
+                                        title: Text('Psychology'),
+                                        onTap: () {
+                                          setState(() {
+                                            selectedGenre = 'Psychology';
+                                          });
+                                          Navigator.pop(context);
+                                        },
+                                      ),
                                     ],
                                   ),
                                 );
@@ -203,27 +283,36 @@ class _HomePageState extends State<HomePage> {
                             'Select Genre',
                             textAlign: TextAlign.center,
                             style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              color: Theme.of(context).colorScheme.secondary,
-                            ),
+                                // fontWeight: FontWeight.bold,
+                                // color: Theme.of(context).colorScheme.secondary,
+                                ),
                           ),
                         ),
                       ),
                     ),
                     SizedBox(width: 10),
-                    ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: Theme.of(context).colorScheme.primary,
-                      ),
-                      onPressed: () {
-                        setState(() {
-                          sortByRating = !sortByRating;
-                        });
-                      },
-                      child: Text(
-                        'Sort by Rating',
-                        style: TextStyle(
-                          color: Theme.of(context).colorScheme.secondary,
+                    Container(
+                      height: 50,
+                      width: 120,
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(20),
+                          color: Theme.of(context).colorScheme.primary),
+                      child: GestureDetector(
+                        // height: ,
+                        onTap: () {
+                          setState(() {
+                            sortByRating = !sortByRating;
+                          });
+                        },
+                        child: Center(
+                          child: Text(
+                            'Sort by Rating',
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                                // fontWeight: FontWeight.bold,
+                                // color: Theme.of(context).colorScheme.secondary,
+                                ),
+                          ),
                         ),
                       ),
                     ),
@@ -272,28 +361,49 @@ class _HomePageState extends State<HomePage> {
           ),
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        backgroundColor: Colors.redAccent,
-        child: Icon(
-          Icons.favorite,
-          color: Colors.white,
-        ),
-        onPressed: () {
-          if (favoriteBooks.isEmpty) {
-            ScaffoldMessenger.of(context).showSnackBar(
-              SnackBar(content: Text('No favorite books yet!')),
-            );
-          } else {
-            Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (context) => FavoritesPage(
-                  favoriteBooks: favoriteBooks,
-                ),
-              ),
-            );
-          }
-        },
+      floatingActionButton: Column(
+        mainAxisAlignment: MainAxisAlignment.end,
+        children: [
+          FloatingActionButton(
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => Bot()),
+              );
+            },
+            backgroundColor: Colors.redAccent,
+            child: Icon(
+              Icons.chat_bubble,
+              // color: Colors.white,
+            ),
+          ),
+          SizedBox(
+            height: 10,
+          ),
+          FloatingActionButton(
+            backgroundColor: Colors.redAccent,
+            child: Icon(
+              Icons.favorite,
+              // color: Colors.white,
+            ),
+            onPressed: () {
+              if (favoriteBooks.isEmpty) {
+                ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(content: Text('No favorite books yet!')),
+                );
+              } else {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => FavoritesPage(
+                      favoriteBooks: favoriteBooks,
+                    ),
+                  ),
+                );
+              }
+            },
+          ),
+        ],
       ),
     );
   }
