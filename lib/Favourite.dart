@@ -33,6 +33,7 @@ class FavoritesPage extends StatelessWidget {
                     author: favoriteBooks[index]['author'],
                     description: favoriteBooks[index]['description'],
                     imageUrl: favoriteBooks[index]['image'],
+                    rating: favoriteBooks[index]['rating'].toString(),
                   ),
                 ),
               );

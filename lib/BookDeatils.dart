@@ -5,6 +5,7 @@ class BookDetailPage extends StatelessWidget {
   final String author;
   final String description;
   final String imageUrl;
+  final String rating;
 
   const BookDetailPage({
     super.key,
@@ -12,6 +13,7 @@ class BookDetailPage extends StatelessWidget {
     required this.author,
     required this.description,
     required this.imageUrl,
+    required this.rating,
   });
 
   @override
@@ -40,9 +42,22 @@ class BookDetailPage extends StatelessWidget {
             ),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16.0),
-              child: Text(
-                "by $author",
-                style: const TextStyle(fontSize: 18, color: Colors.grey),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  Center(
+                    child: Text(
+                      "- $author",
+                      style: const TextStyle(fontSize: 18, color: Colors.grey),
+                    ),
+                  ),
+                  Container(
+                    child: Text(
+                      "⭐ $rating",
+                      style: const TextStyle(fontSize: 18, color: Colors.grey),
+                    ),
+                  ),
+                ],
               ),
             ),
             Padding(

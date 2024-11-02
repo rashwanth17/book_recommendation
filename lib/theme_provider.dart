@@ -4,7 +4,7 @@ import 'package:book/theme.dart';
 import 'package:provider/provider.dart';
 
 class ThemeProvider with ChangeNotifier {
-  ThemeData _themeData = lightmode;
+  ThemeData _themeData = darkmode;
   ThemeData get themeData => _themeData;
   set themeData(ThemeData themeData) {
     _themeData = themeData;

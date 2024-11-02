@@ -26,15 +26,15 @@ class _BotState extends State<Bot> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.background,
-        leading: IconButton(
-            onPressed: () {
-              Navigator.pop(context, true);
-            },
-            color: Colors.grey,
-            icon: Icon(
-              Icons.chevron_left,
-              color: Theme.of(context).colorScheme.primary,
-            )),
+        // leading: IconButton(
+        //     onPressed: () {
+        //       Navigator.pop(context, true);
+        //     },
+        //     color: Colors.grey,
+        //     icon: Icon(
+        //       Icons.chevron_left,
+        //       color: Theme.of(context).colorScheme.primary,
+        //     )),
         title: Text(
           "AI CHATBOT",
           style: TextStyle(color: Colors.grey),
@@ -47,7 +47,7 @@ class _BotState extends State<Bot> {
             Expanded(
               child: MessagesScreen(messages: messages),
             ),
-            // Spacer(),
+
             SafeArea(
               child: Container(
                 decoration: BoxDecoration(
@@ -87,7 +87,7 @@ class _BotState extends State<Bot> {
             ),
             // Spacer(),
             SizedBox(
-              height: 20,
+              height: 100,
             )
             // Ensures the TextField stays at the center
           ],

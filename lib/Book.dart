@@ -30,10 +30,10 @@ class Book extends StatelessWidget {
             borderRadius: BorderRadius.circular(20),
             boxShadow: [
               BoxShadow(
-                color: Colors.grey.withOpacity(0.4),
-                spreadRadius: 2,
-                blurRadius: 6,
-                offset: const Offset(0, 3),
+                color: Colors.grey.withOpacity(0.2),
+                spreadRadius: 4,
+                blurRadius: 10,
+                offset: const Offset(0, 6),
               ),
             ],
             image: DecorationImage(
