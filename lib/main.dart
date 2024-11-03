@@ -106,7 +106,7 @@ class _MainScreenState extends State<MainScreen> {
                         ),
                         GButton(
                           icon: Icons.book,
-                          text: 'EXPLORE',
+                          text: 'Novels',
                         ),
                         GButton(
                           icon: Icons.send_sharp,
