@@ -13,6 +13,7 @@ void main() {
   runApp(MultiProvider(
     providers: [
       ChangeNotifierProvider(create: (context) => ThemeProvider()),
+      ChangeNotifierProvider(create: (context) => FavoritesModel()),
       // ChangeNotifierProvider(create: (context) => FavoritesModel()),
     ],
     child: MyApp(),

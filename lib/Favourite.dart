@@ -4,7 +4,8 @@ import 'package:flutter/material.dart';
 class FavoritesPage extends StatelessWidget {
   final List<Map<String, dynamic>> favoriteBooks;
 
-  const FavoritesPage({super.key, required this.favoriteBooks});
+  const FavoritesPage({Key? key, required this.favoriteBooks})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +23,9 @@ class FavoritesPage extends StatelessWidget {
             ),
             trailing: IconButton(
               icon: Icon(Icons.favorite, color: Colors.red),
-              onPressed: () {},
+              onPressed: () {
+                // You may want to implement removing from favorites here
+              },
             ),
             onTap: () {
               Navigator.push(
